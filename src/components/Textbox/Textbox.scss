@@ -1,0 +1,60 @@
+.textbox {
+  opacity: 0;
+
+  transform: translate3d(0, 5px, 0);
+  transition: opacity 0.3s ease-out, transform 0.55s ease-in-out;
+
+  @include respond-until(l) {
+    transition-delay: 0.3s;
+  }
+
+  .inview & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &--padded-top {
+    padding-top: 0.75rem;
+  }
+
+  &--white {
+    color: $color-white;
+    opacity: 1;
+    text-align: left;
+
+    @include respond-from(l) {
+      text-align: right;
+    }
+  }
+
+  &__inner {
+    font-size: 1rem;
+    max-width: 60rem;
+    padding: 0 5rem;
+    letter-spacing: 0.0375em;
+    line-height: 1.8;
+    position: relative;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    @include respond-until(m) {
+      font-size: 1rem;
+    }
+
+    @include respond-until(l) {
+      padding: 0rem 1rem 1.5rem;
+      letter-spacing: 0.0375em;
+      line-height: 1.5;
+      max-width: none;
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+
+    @include respond-from(l) {
+      font-size: 1.2rem;
+    }
+  }
+}

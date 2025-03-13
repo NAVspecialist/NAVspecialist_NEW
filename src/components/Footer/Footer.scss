@@ -1,0 +1,20 @@
+.footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $color-black;
+  font-size: 0.9rem;
+
+  color: $color-white;
+  text-align: center;
+  padding: 3rem 0;
+
+  @include respond-from(l) {
+    height: 200px;
+    position: fixed;
+  }
+}

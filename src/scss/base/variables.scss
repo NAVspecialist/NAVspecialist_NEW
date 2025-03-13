@@ -1,0 +1,25 @@
+$color-black: #010101;
+$color-gray--dark: #231f20;
+$color-gray: #444444;
+$color-gray--light: #939598;
+$color-blue: #009ee2;
+$color-blue--dark: #00aeef;
+$color-blue--darker: #001945;
+$color-blue--sofie: #0d2145;
+$color-white: #f4f4f4;
+
+$section-top-padding: 7.5rem;
+$section-top-padding--half: 3.75rem;
+$sidebar-color: $color-black;
+
+$breakpoints: (
+  ("xs", 480px),
+  ("s", 624px),
+  ("sm", 768px),
+  ("m", 896px),
+  ("md", 1024px),
+  ("l", 1195px),
+  ("lg", 1366px),
+  ("xl", 1680px),
+  ("xxl", 1920px)
+);

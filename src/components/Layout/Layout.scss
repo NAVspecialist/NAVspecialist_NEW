@@ -1,0 +1,244 @@
+@font-face {
+  font-family: "Geologica";
+  src: url("../../fonts/Geologica-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geologica Bold";
+  src: url("../../fonts/Geologica-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  overflow-x: hidden;
+
+  @include respond-until(l) {
+    &.prevent-scroll {
+      overflow: hidden !important;
+    }
+  }
+}
+
+body {
+  font-family: "Geologica", Arial, Helvetica, sans-serif;
+  overscroll-behavior: none;
+  background-color: $color-black;
+  overflow-x: hidden;
+
+  @include respond-until(l) {
+    &.prevent-scroll {
+      overflow: hidden !important;
+    }
+  }
+}
+
+b {
+  font-family: "Geologica Bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page {
+  position: relative;
+  &__foreground {
+    position: relative;
+    background-color: $color-white;
+    z-index: 1;
+  }
+  &__background {
+    width: 50%;
+    background-color: $sidebar-color;
+    box-shadow: 0 0 20px rgba($color-black, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 0;
+
+    @include respond-until(l) {
+      display: none;
+    }
+  }
+}
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  width: 100% !important;
+
+  @include respond-from(l) {
+    width: 50% !important;
+  }
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: $color-black;
+  padding: 4rem 0 0;
+  font-size: 1rem;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: $color-gray;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  @include respond-from(l) {
+    justify-content: center;
+  }
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba($color-black, 0.3);
+}
+
+.menu-link {
+  outline: none;
+  font-size: 1.4rem;
+  border-bottom: 1px solid rgba($color-white, 0.05);
+  line-height: 2;
+  padding: 0 1rem;
+  cursor: pointer;
+  &.active {
+    color: $color-blue;
+  }
+
+  &:hover {
+    color: $color-blue;
+  }
+
+  @include respond-from(l) {
+    font-size: 2.2rem;
+    line-height: 2.5;
+  }
+}
+
+.navigation {
+  background-color: rgba($color-black, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-burger {
+    padding: 0;
+    > div {
+      display: block !important;
+    }
+  }
+
+  &__logo {
+    opacity: 0;
+    max-width: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.35s ease-out, opacity 0.35s ease-out, padding 0.35s ease-out;
+
+    @include respond-from(l) {
+      position: relative;
+      overflow: hidden;
+      width: 0;
+      padding: 0;
+      transform: none;
+      left: 0;
+    }
+
+    .navigation--overlayed & {
+      opacity: 1;
+      @include respond-from(l) {
+        width: 100px;
+        padding: 0 1rem 0 0;
+      }
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding-left: 1rem;
+  }
+
+  &--overlayed {
+    background-color: rgba($color-black, 0.95);
+    box-shadow: 0 2px 30px rgba($color-black, 0.4);
+  }
+
+  @include respond-from(l) {
+    width: calc(50% - 10px);
+    background-color: transparent;
+  }
+
+  &--overlayed {
+    background-color: rgba($color-black, 0.95);
+  }
+}
+
+#outer-container {
+  position: relative;
+
+  @include respond-from(l) {
+    z-index: 99;
+    margin-bottom: 200px;
+  }
+}

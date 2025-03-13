@@ -1,0 +1,151 @@
+.intro-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+
+  @include respond-from(l) {
+    flex-direction: row;
+  }
+
+  &--half {
+    min-height: 50vh;
+  }
+
+  &--three {
+    min-height: 75vh;
+  }
+
+  &--full {
+    min-height: 100vh;
+  }
+
+  &__left {
+    width: 100vw;
+    position: relative;
+    display: flex;
+    box-shadow: 0 0 20px rgba($color-black, 0.2);
+    z-index: 1;
+    background-color: $color-black;
+    padding-bottom: 1rem;
+    min-height: 100vh;
+
+    @include respond-until(l) {
+      min-height: 50vh;
+    }
+
+    @include respond-from(l) {
+      padding-top: $section-top-padding;
+      width: 50vw;
+      justify-content: center;
+      align-items: flex-end;
+      background-color: $color-black;
+      padding-bottom: 0;
+    }
+
+    &--intro {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0;
+      padding: 64px 1rem 1.5rem;
+
+      @include respond-from(l) {
+        align-items: flex-end;
+        padding: 1rem 1rem 1.5rem;
+      }
+
+      svg {
+        max-width: 200px;
+
+        @include respond-from(l) {
+          max-width: 480px;
+        }
+      }
+    }
+  }
+
+  &__middle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 40%;
+    height: 100%;
+    transform: translateX(-50%);
+
+    &-inner {
+      @include ratio(4, 4);
+      border-radius: 100%;
+      background-color: rgba($color-blue, 0.5);
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+
+  &__right {
+    width: 100vw;
+
+    position: relative;
+    z-index: 0;
+
+    @include ratio(4, 4);
+
+    @include respond-until(l) {
+      min-height: 50vh;
+    }
+
+    @include respond-from(l) {
+      width: 50vw;
+      &:before {
+        display: none;
+      }
+    }
+
+    &-images {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+    }
+
+    &--top {
+      height: 50%;
+      background-position: center left;
+    }
+    &--bottom {
+      height: 50%;
+      background-position: center right;
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-family: "Geologica Bold", sans-serif;
+    text-transform: uppercase;
+    @include rfs(6rem, font-size);
+    padding: 30px 0 0;
+    left: -6px;
+    text-align: left;
+    line-height: 1;
+    color: $color-white;
+
+    @include respond-from(l) {
+      text-align: right;
+      padding: 2rem 1rem 0;
+      max-width: 35rem;
+      left: 0;
+    }
+  }
+}

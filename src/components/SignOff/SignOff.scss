@@ -1,0 +1,8 @@
+.signoff {
+  padding: 1.5rem 0;
+  text-align: left;
+
+  @include respond-from(l) {
+    padding: 3rem 0;
+  }
+}

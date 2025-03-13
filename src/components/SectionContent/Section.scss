@@ -1,0 +1,152 @@
+.page-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+
+  @include respond-from(l) {
+    flex-direction: row;
+  }
+
+  &--half {
+    min-height: 25vh;
+  }
+
+  &--half {
+    min-height: 50vh;
+  }
+
+  &--three {
+    min-height: 75vh;
+  }
+
+  &--full {
+    min-height: 100vh;
+  }
+
+  @include respond-to(l) {
+    min-height: 0;
+  }
+
+  &__left {
+    width: 100vw;
+    position: relative;
+    display: flex;
+
+    &--intro {
+      align-items: center;
+      padding-top: 0;
+    }
+
+    @include respond-from(l) {
+      padding-top: $section-top-padding;
+      width: 50vw;
+      justify-content: flex-end;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $sidebar-color;
+      z-index: -1;
+      @include respond-from(l) {
+        //border-right: 5px solid darken($sidebar-color, 5);
+      }
+    }
+
+    .remove-left & {
+      display: none;
+      @include respond-from(l) {
+        display: flex;
+      }
+    }
+
+    &--white {
+      color: $color-white;
+      text-align: left;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+      font-size: 1rem;
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      @include respond-from(md) {
+        align-items: flex-end;
+        min-height: 50vh;
+      }
+
+      @include respond-from(l) {
+        text-align: right;
+        padding: $section-top-padding 2rem 0;
+        font-size: 0.9rem;
+        min-height: 0;
+        p {
+          max-width: 60%;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      @include respond-from(xxl) {
+        p {
+          max-width: 40%;
+        }
+      }
+    }
+  }
+  &__right {
+    width: 100vw;
+
+    .textbox__inner {
+      p {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include respond-from(l) {
+      padding-top: $section-top-padding;
+      width: 50vw;
+    }
+  }
+
+  &__title {
+    font-family: "Geologica Bold", Arial, Helvetica, sans-serif;
+    @include rfs(3.5rem, font-size);
+    padding: 1.2rem 1rem;
+    text-align: left;
+    line-height: 1.1;
+    color: $color-white;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease-out, transform 0.55s ease-in-out;
+
+    &.blue {
+      color: $color-blue;
+    }
+
+    @include respond-from(l) {
+      text-align: right;
+      padding: 5px 2rem;
+      transform: translate3d(-10px, 0, 0);
+    }
+
+    .inview & {
+      opacity: 1;
+
+      @include respond-from(l) {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+}
